@@ -2,6 +2,9 @@
 
 namespace App;
 
+use \App\Models\Setting;
+use \App\Models\UserType;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -16,8 +20,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'id',
+        'name',
+        'user_type_id',
+        'email',
+        'password',
+        'remember_token',
+        'created_by'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -28,12 +39,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function type_u(){
+        return $this->belongsTo(UserType::class, 'user_type_id', 'id');
+
+    }
+
+    public function setting(){
+        return Setting::where('id','1')->first();
+    }
+
+    public function author(){
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+
 }
