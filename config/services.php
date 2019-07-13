@@ -44,4 +44,10 @@ return [
         ],
     ],
 
+    'google' => [
+        'client_id' => env('LIB_GOOGLE_CLIENT_ID'),
+        'client_secret' => env('LIB_GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('LIB_GOOGLE_REDIRECT_URL'),
+    ],
+
 ];
