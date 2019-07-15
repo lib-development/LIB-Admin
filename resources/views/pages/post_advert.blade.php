@@ -8,7 +8,7 @@
         <div class="page-header">
             <h1>Post Advert</h1>
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Post Advert</li>
             </ol>
         </div>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="panel-body">
 
-                            <form action="{{ url('/post/advert') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('/adverts/new') }}" method="post" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 @include('errors.showerrors')
                                 <div class="form-group">

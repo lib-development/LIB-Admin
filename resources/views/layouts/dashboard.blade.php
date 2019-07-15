@@ -103,7 +103,7 @@
                </li>
                 <li class="main-search hidden-xs">
                     <div class="input-wrap">
-                        <form action="{{ url('search/article') }}">
+                        <form action="{{ url('search/posts') }}">
                         <input class="form-control" name="search" type="text" placeholder="Search Here...">
                         <a type="submit"><i class="sli-magnifier"></i></a>
                         </form>
@@ -133,10 +133,10 @@
 
             <ul class="side-nav magic-nav">
 
-                <li class="side-nav-header">Navigation</li>
+                <li class="side-nav-header" style="margin: 10px 0"></li>
 
                 <li>
-                    <a href="{{ url('/home') }}"><i class="sli-dashboard"></i> <span class="nav-text">Dashboard</span></a>
+                    <a href="{{ url('/') }}"><i class="sli-dashboard"></i> <span class="nav-text">Dashboard</span></a>
                 </li>
 
                 <li class="has-submenu">
@@ -146,20 +146,20 @@
                     </a>
                     <div class="sub-menu collapse in secondary" id="submenuOne">
                         <ul>
-                            <li><a href="{{ url('/post/article') }}">Create a Post</a></li>
+                            <li><a href="{{ url('/post/create') }}">Create a Post</a></li>
 
-                            <li><a href="{{ url('/articles') }}">Posts ({{ article_all() }})</a></li>
-                            <li><a href="{{ url('/pending/approval') }}">Pending Approval ({{ article('2') }})</a></li>
-                            <li><a href="{{ url('/published/approval') }}">Published (
+                            <li><a href="{{ url('/posts') }}">Posts ({{ article_all() }})</a></li>
+                            <li><a href="{{ url('/posts/approval/pending') }}">Pending Approval ({{ article('2') }})</a></li>
+                            <li><a href="{{ url('/posts/approval/published') }}">Published (
                                     @if(auth()->user()->user_type_id == "1")
 {{ setting_ii() }}
                                         @else
                                     {{ article('1') }}
                                         @endif
                                         )</a></li>
-                            <li><a href="{{ url('/get/draft') }}">Draft ({{ article('3') }})</a></li>
+                            <li><a href="{{ url('/posts/draft') }}">Draft ({{ article('3') }})</a></li>
                             @if(auth()->user()->user_type_id == "1")
-                                <li><a href="{{ url('/scheduled/post') }}">Scheduled Post ({{ article('4') }})</a></li>
+                                <li><a href="{{ url('/post/schedule') }}">Scheduled Post ({{ article('4') }})</a></li>
                             @endif
                         </ul>
                     </div>
@@ -172,7 +172,7 @@
                     </a>
                     <div class="sub-menu collapse secondary" id="submenuTwo">
                         <ul>
-                            <li><a href="{{ url('/post/advert') }}">Post Advert</a></li>
+                            <li><a href="{{ url('/adverts/new') }}">Post Advert</a></li>
                             <li><a href="{{ url('/adverts') }}">Adverts</a></li>
                         </ul>
                     </div>
@@ -201,7 +201,7 @@
                     </a>
                     <div class="sub-menu collapse secondary" id="submenuThree">
                         <ul>
-                            <li><a href="{{ url('/add/staff') }}">Add Staff</a></li>
+                            <li><a href="{{ url('/staffs/add') }}">Add Staff</a></li>
                             <li><a href="{{ url('/staffs') }}">Staff</a></li>
                         </ul>
                     </div>
@@ -282,16 +282,22 @@
 
 @yield('script')
 <script data-cfasync="false">
+    function removeUser(id){
+        var ask = confirm('Are you sure you want to remove this user?');
+        if(ask){
+            window.location = '{{ url('/staffs/remove/') }}/'+ id;
+        }
+    }
     function deleteArticle(id){
         var ask = confirm('Are you sure you want to delete this Post');
         if(ask){
-            window.location = '{{ url('/delete/article') }}/'+ id;
+            window.location = '{{ url('/post/delete/') }}/'+ id;
         }
     }
     function pushArticle(id){
         var ask = confirm('Are you sure you want to push to all your readers');
         if(ask){
-            window.location = '{{ url('/push/update') }}/'+ id;
+            window.location = '{{ url('/post/update') }}/'+ id;
         }
     }
     $("#checkAll").change(function () {

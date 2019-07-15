@@ -5,7 +5,7 @@
         <div class="page-header">
             <h1>Moderate Comment</h1>
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="#">Moderate Comment</a></li>
             </ol>
         </div>
@@ -22,7 +22,7 @@
                             <h3 class="panel-title">
                             <span class="pull-right">
                                 @if($comments->count() > 0)
-                                <input type="submit" value="Approve" class="btn btn-warning btn-xs" name="approve"/>
+                                <input type="submit" value="Approve" class="btn btn-success btn-xs" name="approve"/>
                                 <input type="submit" value="Decline" class="btn btn-danger btn-xs" name="decline"/>
                                     @endif
                             </span>
@@ -38,11 +38,11 @@
                                     <thead>
                                     <tr>
                                         <th><input type="checkbox" id="checkAll"/></th>
-                                        <th width="400">Post</th>
+                                        <th width="200">Post</th>
                                         <th width="100">Name</th>
                                         <th width="100">Email</th>
                                         <th width="400">Comment</th>
-                                        <th>Created On</th>
+                                        <th width="200">Created On</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -51,13 +51,13 @@
                                         <tr>
                                             <?php $b_c = $comment->blogContent;?>
                                             <td><input type="checkbox" name="comment_id[]" value="{{ $comment->id }}"></td>
-                                            <td><a target="_blank" href="{{ url('/p/'.$b_c->year.'/'.$b_c->month.'/'.$b_c->slug) }}.html">{{ $comment->blogContent->title }}</a></td>
+                                            <td><a target="_blank" href="{{ url('http://lindaikejisblog.com/p/'.$b_c->year.'/'.$b_c->month.'/'.$b_c->slug) }}.html">{{ $comment->blogContent->title }}</a></td>
                                             <td>{{ $comment->name }}</td>
                                             <td>{{ $comment->email }}</td>
                                             <td>{{ utf8_decode($comment->comments) }}</td>
                                             <td>{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</td>
-                                            <td><a href="javascript:;" onclick="approveComment('{{ url('approve/comment/'.encrypt_decrypt('encrypt',$comment->id)) }}')" class="btn btn-danger btn-xs">Approve</a></td>
-                                            <td><a href="javascript:;" onclick="movetotrash('{{ url('decline/comment/'.encrypt_decrypt('encrypt',$comment->id)) }}')" class="btn btn-danger btn-xs">Move to Trash</a></td>
+                                            <td><a href="javascript:;" onclick="approveComment('{{ url('comment/approve/'.encrypt_decrypt('encrypt',$comment->id)) }}')" class="btn btn-success btn-xs">Approve</a></td>
+                                            <td><a href="javascript:;" onclick="movetotrash('{{ url('comment/decline/'.encrypt_decrypt('encrypt',$comment->id)) }}')" class="btn btn-danger btn-xs">Move to Trash</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

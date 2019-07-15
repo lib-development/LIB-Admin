@@ -8,7 +8,7 @@
         <div class="page-header">
             <h1>Add Staffs</h1>
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Add Staffs</li>
             </ol>
         </div>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="panel-body">
 
-                            <form action="{{ url('/add/staff') }}" method="post">
+                            <form action="{{ url('/staffs/add') }}" method="post">
                                 {!! csrf_field() !!}
                                 @include('errors.showerrors')
                                 <div class="form-group">

@@ -5,7 +5,7 @@
         <div class="page-header">
             <h1>Adverts</h1>
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Adverts</li>
             </ol>
         </div>
@@ -19,7 +19,7 @@
                         <div class="panel-heading" style="background: #881111">
                             <h3 class="panel-title">Adverts
                             <span>
-                                <a href="{{ url('post/advert') }}" class="btn btn-default btn-xs pull-right">
+                                <a href="{{ url('adverts/new') }}" class="btn btn-default btn-xs pull-right">
                                     Add Advert
                                 </a>
                             </span>
@@ -65,7 +65,7 @@
                                                               @endif
                                                               </td>
                                                           <td>{{ $advert->order }}</td>
-                                                          <td><a href="{{ url('/edit/advert/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
+                                                          <td><a href="{{ url('/adverts/edit/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
 
                                                       </tr>
                                                   @endforeach
@@ -103,7 +103,7 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{ $advert->order }}</td>
-                                                            <td><a href="{{ url('/edit/advert/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
+                                                            <td><a href="{{ url('/adverts/edit/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
 
                                                         </tr>
                                                     @endforeach
@@ -141,7 +141,7 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{ $advert->order }}</td>
-                                                            <td><a href="{{ url('/edit/advert/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
+                                                            <td><a href="{{ url('/adverts/edit/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
 
                                                         </tr>
                                                     @endforeach
@@ -179,7 +179,7 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{ $advert->order }}</td>
-                                                            <td><a href="{{ url('/edit/advert/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
+                                                            <td><a href="{{ url('/adverts/edit/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
 
                                                         </tr>
                                                     @endforeach
@@ -217,7 +217,7 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{ $advert->order }}</td>
-                                                            <td><a href="{{ url('/edit/advert/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
+                                                            <td><a href="{{ url('/adverts/edit/'.$advert->id) }}" class="btn btn-info btn-xs">Edit</a><a href="javascript:;" onclick="deleteAdvert('{{ $advert->id }}')"  class="btn btn-danger btn-xs" style="margin-left: 10px;">Move to Trash</a></td>
 
                                                         </tr>
                                                     @endforeach
@@ -255,7 +255,7 @@
     function deleteAdvert(id){
         var confirmthis = confirm('Are you sure you want to delete Advert');
         if(confirmthis){
-            window.location = '{{ url('delete/advert') }}/'+ id
+            window.location = '{{ url('adverts/delete') }}/'+ id
         }
     }
 </script>

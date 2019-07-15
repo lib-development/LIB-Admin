@@ -8,7 +8,7 @@
             <div class="page-header">
                 <h1>Dashboard <small>Welcome back <span class="text-primary">{{ auth()->user()->name }}</span></small></h1>
                 <ol class="breadcrumb">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li class="active">Dashboard</li>
                 </ol>
             </div>
@@ -19,7 +19,7 @@
                 <div class="row">
 @if(auth()->user()->user_type_id == "1")
                     <div class="col-md-4 col-sm-6">
-<a href="{{ url('/articles') }}">
+<a href="{{ url('/posts') }}">
                         <div class="mini-Vchart ui-item">
                             <div class="ui-top">
                                 <!-- Heading -->
@@ -36,7 +36,11 @@
                             <div class="ui-top">
                                 <!-- Heading -->
                                 <h4>Staff</h4>
-                                <h2 class="text-primary">{{ $staffs }}</h2>
+                                @if(isset($staffs))
+                                    <h2 class="text-primary">{{ $staffs }}</h2>
+                                @else
+                                <h2 class="text-primary">0</h2>
+                                @endif
                             </div>
                         </div>
                         </a>
@@ -55,7 +59,7 @@
                     </div>
                          @elseif(auth()->user()->user_type_id == "2")
                         <div class="col-md-4 col-sm-6">
-                            <a href="{{ url('/articles') }}">
+                            <a href="{{ url('/posts') }}">
                             <div class="mini-Vchart ui-item">
                                 <div class="ui-top">
                                     <!-- Heading -->
@@ -66,7 +70,7 @@
                             </a>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <a href="{{ url('/pending/approval') }}">
+                            <a href="{{ url('/posts/approval/pending') }}">
                             <div class="mini-Vchart ui-item">
                                 <div class="ui-top">
                                     <!-- Heading -->
@@ -132,7 +136,7 @@
                                                     ?>" alt="" class="img-responsive" />
                                                 </td>
                                                 <td>
-                                                    <a href="{{ url('edit/post/'.encrypt_decrypt('encrypt',$article->id)) }}">{{ utf8_decode($article->title) }}</a>
+                                                    <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}">{{ utf8_decode($article->title) }}</a>
                                                 </td>
 
                                                 <td>
@@ -169,7 +173,7 @@
                                                 </td>
                                                 <td>
 
-                                                    <a href="{{ url('edit/post/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
+                                                    <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
                                                     @if(($article->status == "3" && $article->author == auth()->user()->id ) || auth()->user()->user_type_id == "1")
                                                         @if($article->status == "1")
                                                             {{--<a href="#" onclick = "pushArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-info btn-xs">Push</a>--}}
@@ -189,7 +193,7 @@
                                         @endif
                                     </div>
                                 @else
-                                    <div class="alert alert-info">Oops, you have not created any article</div>
+                                    <div class="alert alert-info">0 Posts awaiting action.</div>
                                 @endif
 
                             </div>

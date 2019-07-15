@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Graphik';
+    src: url('Graphik-Light.eot'); /* IE9 Compat Modes */
+    src: url('Graphik-Lightd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Graphik-Light.woff') format('woff'), /* Modern Browsers */
+         url('Graphik-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Graphik-Light.svg#Graphik-Light') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 100;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('Graphik-Regular.eot'); /* IE9 Compat Modes */
+    src: url('Graphik-Regulard41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Graphik-Regular.woff') format('woff'), /* Modern Browsers */
+         url('Graphik-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Graphik-Regular.svg#Graphik-Regular') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('Graphik-Medium.eot'); /* IE9 Compat Modes */
+    src: url('Graphik-Mediumd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Graphik-Medium.woff') format('woff'), /* Modern Browsers */
+         url('Graphik-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Graphik-Medium.svg#Graphik-Medium') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 600;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('Graphik-Semibold.eot'); /* IE9 Compat Modes */
+    src: url('Graphik-Semiboldd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Graphik-Semibold.woff') format('woff'), /* Modern Browsers */
+         url('Graphik-Semibold.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Graphik-Semibold.svg#Graphik-Semibold') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 700;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: url('Graphik-Bold.eot'); /* IE9 Compat Modes */
+    src: url('Graphik-Boldd41d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Graphik-Bold.woff') format('woff'), /* Modern Browsers */
+         url('Graphik-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Graphik-Bold.svg#Graphik-Bold') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: 800;
+    text-rendering: optimizeLegibility;
+}
+

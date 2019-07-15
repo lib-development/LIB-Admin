@@ -8,7 +8,7 @@
         <div class="page-header">
             <h1>Settings</h1>
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Comment Settings</li>
             </ol>
         </div>

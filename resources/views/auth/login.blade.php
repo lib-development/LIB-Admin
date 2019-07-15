@@ -24,6 +24,12 @@
                             document.getElementById('googleAuth').addEventListener('click', evt => window.location.href = '/auth')
                         </script>
                     </div>
+                    @if (session('auth-fail'))
+                        <div class="alert alert-danger">
+                            {{ session('auth-fail') }}
+                            <a href="https://lindaikejisblog.com">Return to Blog</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
