@@ -1,0 +1,12 @@
+/* Webfont: Graphik-Regular */@font-face {
+    font-family: 'GraphikRegular';
+    src: url('Graphik-Regular.eot'); /* IE9 Compat Modes */
+    src: url('Graphik-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Graphik-Regular.woff') format('woff'), /* Modern Browsers */
+         url('Graphik-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Graphik-Regular.svg#Graphik-Regular') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
