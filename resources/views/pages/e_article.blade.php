@@ -19,7 +19,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Edit this Post
                             <span class="pull-right">
-                                 <form action="{{ url('/edit/content') }}" method="post" enctype="multipart/form-data">
+                                 <form action="{{ url('/post/edit') }}" method="POST" enctype="multipart/form-data">
                                          <a onclick="close_b()" style="margin-left: 20px;" class="btn btn-default btn-xs pull-right">Close</a>
 
                                      @if(auth()->user()->user_type_id == "1" && $article->status == "1")

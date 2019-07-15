@@ -1,0 +1,12 @@
+/* Webfont: Graphik-Semibold */@font-face {
+    font-family: 'GraphikSemibold';
+    src: url('Graphik-Semibold.eot'); /* IE9 Compat Modes */
+    src: url('Graphik-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Graphik-Semibold.woff') format('woff'), /* Modern Browsers */
+         url('Graphik-Semibold.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Graphik-Semibold.svg#Graphik-Semibold') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

@@ -8,7 +8,7 @@
         <div class="page-header">
             <h1>Settings</h1>
             <ol class="breadcrumb">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Settings</li>
             </ol>
         </div>
@@ -20,7 +20,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Update Settings{Basically for SEO optimisation} <span class="pull-right"><a href="{{ url('pull/content') }}" class="btn btn-info btn-xs">Pull Data</a></span><span class="pull-right" style="margin-right: 5px;"><a href="{{ url('clear/cache') }}" class="btn btn-danger btn-xs">Update HomePage/Mobile</a></span></h3>
+                            <h3 class="panel-title">Update Settings{Basically for SEO optimisation} <span class="pull-right"><a href="{{ url('cache/content/pull') }}" class="btn btn-info btn-xs">Pull Data</a></span><span class="pull-right" style="margin-right: 5px;"><a href="{{ url('cache/clear/') }}" class="btn btn-danger btn-xs">Update HomePage/Mobile</a></span></h3>
                         </div>
                         <div class="panel-body">
                             <!-- The Image would be here-->
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             @endif
-                            <form action="{{ url('/update/settings') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ url('/settings/update') }}" method="post" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 @include('errors.showerrors')
                                 <div class="form-group">

@@ -8,7 +8,7 @@
               {{ $title }}
             </h1>
             <ol class="breadcrumb   ">
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class="active">Reports</li>
             </ol>
         </div>
@@ -71,7 +71,7 @@ btn-warning
                                                 ?>" alt="" class="img-responsive" />
                                             </td>
                                             <td>
-                                                <a href="{{ url('edit/post/'.encrypt_decrypt('encrypt',$article->id)) }}">{{ utf8_decode($article->title) }}</a>
+                                                <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}">{{ utf8_decode($article->title) }}</a>
                                             </td>
 
                                             <td>
@@ -108,7 +108,7 @@ btn-warning
                                             </td>
                                             <td>
 
-                                                <a href="{{ url('edit/post/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
+                                                <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
                                                 @if(($article->status == "3" && $article->author == auth()->user()->id ) || auth()->user()->user_type_id == "1")
                                                     @if($article->status == "1")
                                                         {{--<a href="#" onclick = "pushArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-info btn-xs">Push</a>--}}
@@ -126,7 +126,7 @@ btn-warning
 
                                 </div>
                             @else
-                                <div class="alert alert-info">Oops, you have not created any article</div>
+                                <div class="alert alert-info">0 Posts awaiting action.</div>
                             @endif
                         </div>
                     </div>

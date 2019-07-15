@@ -179,7 +179,7 @@ if(isset($result[0][0])){
                                             <a href="javascript:;" onclick="replyComment('{{ $comment->id }}')"class="btn btn-danger btn-xs" style="font-size:10px;line-height: 16px;background: #8d112b;padding: 0px 4px;"> Reply</a>
 
                                             @if(auth()->check())
-                                                <a href="javascript:;" onclick="declineC('{{ url('/decline/comment/'.encrypt_decrypt('encrypt',$comment->id)) }}')" class="btn btn-xs btn-danger pull-right">Delete</a>
+                                                <a href="javascript:;" onclick="declineC('{{ url('/comment/remove/'.encrypt_decrypt('encrypt',$comment->id)) }}')" class="btn btn-xs btn-danger pull-right">Delete</a>
                                                 @endif
                                             <br/>
                                            @if($advert_count % 4 == 0 && $advert_count < 17)
@@ -231,7 +231,7 @@ if(isset($result[0][0])){
                                                                     @endif</span></a>
                                                             <a href="javascript:;" class="btn btn-danger btn-xs" style="font-size:10px;line-height: 16px;background: #8d112b;padding: 0px 4px;" onclick="replyComment('{{ $child['id'] }}')">Reply</a>
                                                             @if(auth()->check())
-                                                                <a href="javascript:;" onclick="declineC('{{ url('/decline/comment/'.encrypt_decrypt('encrypt',$child['id'])) }}')" class="btn btn-xs btn-danger pull-right">Delete</a>
+                                                                <a href="javascript:;" onclick="declineC('{{ url('/comment/remove/'.encrypt_decrypt('encrypt',$child['id'])) }}')" class="btn btn-xs btn-danger pull-right">Delete</a>
                                                             @endif
                                                         </div>
                                                     </div>

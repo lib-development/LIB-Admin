@@ -66,7 +66,8 @@ class LoginController extends Controller
             $user = Socialite::driver('google')->user();
             $userProfile = User::where('email', $user->email)->first();
             if (!$userProfile) {
-                return "redirect('/login')";
+                session()->flash('auth-fail', 'You are not authorized to proceed!');
+                return redirect('/login');
             }
             Setting::where('id', 1)->update(['google_token' => $user->token]);
             auth()->loginUsingId($userProfile->id);

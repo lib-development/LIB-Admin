@@ -16,7 +16,7 @@
             var c = confirm("Are you sure you want to close this Post");
             if(c){
                 localStorage.clear();
-                window.location = "/articles";
+                window.location = "/posts";
             }
         }
 
@@ -56,10 +56,16 @@
         <?php $csrf_token = csrf_token();?>
 
         CKEDITOR.replace( 'my-editor', {
-            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{ $csrf_token }}',
-            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{ $csrf_token }}',
+            filebrowserImageBrowseUrl: '/file/upload',
+            filebrowserImageUploadUrl: '/file/upload?type=Images&_token={{ $csrf_token }}',
+            filebrowserBrowseUrl: '/file/upload',
+            filebrowserUploadUrl: '/file/uploadtype=Files&_token={{ $csrf_token }}',
+
+
+            // filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            // filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{ $csrf_token }}',
+            // filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            // filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{ $csrf_token }}',
 
             toolbar: [
                 { name: 'document', items: [ 'Print' ] },
