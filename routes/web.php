@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'file'], function () {
-        Route::post('/upload', 'Blog\ImageController@uploadImageToCloudinary')->name('post.create.complete');
+        Route::post('/upload', 'Blog\ImageController@uploadImageToGoogleCloudBucket');
     });
 
     Route::group(['prefix' => 'search'], function () {
