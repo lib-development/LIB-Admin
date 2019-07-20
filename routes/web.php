@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'file'], function () {
-        Route::post('/upload', 'Blog\ImageController@uploadImageToGoogleCloudBucket');
+        Route::post('/upload', 'Blog\ImageController@uploadImageToGoogleCloudBucketStorage');
     });
 
     Route::group(['prefix' => 'search'], function () {
