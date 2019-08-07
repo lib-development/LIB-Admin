@@ -31,6 +31,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/schedule','DashboardController@scheduledPost');
     });
 
+    // CATEGORIES Prefix
+    Route::group(['prefix' => 'categories'], function () {
+        Route::get('/','Blog\CategoriesController@getAllCategories');
+        Route::get('/{id}','Blog\CategoriesController@viewCategory');
+        Route::post('/','Blog\CategoriesController@addCategory');
+        Route::post('/edit/{id}','Blog\CategoriesController@updateCategory');
+        Route::get('/delete/{id}','Blog\CategoriesController@removeCategory');
+    });
+
     Route::group(['prefix' => 'file'], function () {
         Route::post('/upload', 'Blog\ImageController@uploadImageToGoogleCloudBucketStorage');
     });

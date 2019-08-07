@@ -27,22 +27,23 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            @if(count($articles))
+                            @if(count($articles) >= 1)
                                 <div style="overflow-x:auto;">
-                            <table class="table table-responsive">
-                                <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th style="width: 500px">Title</th>
-                                   <th>Status</th>
-                                    <th>Comments</th>
-                                    <th style="width: 150px">Written by</th>
-                                    <th style="width: 150px">Views</th>
-                                    <th style="width: 150px">Published Date</th>
-                                    <th style="width: 100px">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                                    <table class="table table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th style="width: 300px">Title</th>
+                                            <th style="width: 200px">Category</th>
+                                            <th>Status</th>
+                                            <th>Comments</th>
+                                            <th style="width: 150px">Written by</th>
+                                            <th style="width: 150px">Views</th>
+                                            <th style="width: 150px">Published Date</th>
+                                            <th style="width: 100px">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
                                 @if(auth()->user()->user_type_id == "1")
 
                                     @if(isset($scheduled_articles) && $scheduled_articles->count() > 0)
@@ -62,12 +63,15 @@
                                         <td>
                                             <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}">{{ utf8_decode($article->title) }}</a>
                                         </td>
+                                        <td>
+                                            <a href="{{ url('/categories/'. $article->category->id) }}">{{ $article->category->name }}</a>
+                                        </td>
 
                                         <td>
                                             <p>@if($article->status == "1")
                                                     <span class="label label-success btn-xs">Published</span>
                                                 @elseif($article->status == "2")
-                                                    <span class="label label-warning btn-xs">  Pending Approval</span>
+                                                    <span class="label label-warning btn-xs">Pending Approval</span>
                                                 @elseif($article->status == "4")
                                                     <span class="label label-default btn-xs">Scheduled</span>
 
@@ -128,7 +132,9 @@
                                             <td>
                                                 <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}">{{ utf8_decode($article->title) }}</a>
                                             </td>
-
+                                            <td>
+                                                <a href="{{ url('/categories/'. $article->category->id) }}">{{ $article->category->name }}</a>
+                                            </td>
                                             <td>
                                                 <p>@if($article->status == "1")
                                                         <span class="label label-success btn-xs">Published</span>
@@ -162,14 +168,15 @@
                                                 {{ \Carbon\Carbon::parse($article->publish_date)->format('d/m/Y g:i A') }}
                                             </td>
                                             <td>
-
-                                                <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
-                                                @if(($article->status == "3" && $article->author == auth()->user()->id ) || auth()->user()->user_type_id == "1")
-                                                    @if($article->status == "1")
-                                                        {{--<a href="#" onclick = "pushArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-info btn-xs">Push</a>--}}
+                                                <div class="btn-group">
+                                                    <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
+                                                    @if(($article->status == "3" && $article->author == auth()->user()->id ) || auth()->user()->user_type_id == "1")
+                                                        @if($article->status == "1")
+                                                            {{--<a href="#" onclick = "pushArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-info btn-xs">Push</a>--}}
+                                                        @endif
+                                                        <a href="#" onclick = "deleteArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-danger btn-xs">Delete</a>
                                                     @endif
-                                                    <a href="#" onclick = "deleteArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-danger btn-xs">Delete</a>
-                                                @endif
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -192,6 +199,9 @@
                                         </td>
                                         <td>
                                             <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}">{{ utf8_decode($article->title) }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/categories/'. $article->category->id) }}">{{ $article->category->name }}</a>
                                         </td>
 
                                         <td>

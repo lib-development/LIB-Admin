@@ -87,15 +87,10 @@
                             <div class="form-group">
                                 <label>Category</label>
                                   <select name="category_id" class="form-control">
-                                      <option value="1">News</option>
-                                      <option value="2">Entertainment</option>
-                                      <option value="3">Politics</option>
-                                      <option value="4">Sports</option>
-                                      <option value="5">Weddings</option>
-                                      <option value="6">Lifestyle</option>
-                                      <option value="7">Fashion</option>
-                                      <option value="8">Pictures</option>
-                                      <option value="9">Videos</option>
+                                    {{-- <option value="1">General</option> --}}
+                                    @foreach (allCategories() as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                   </select>
                              </div>
                                 <div class="form-group">

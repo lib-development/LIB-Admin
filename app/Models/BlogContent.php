@@ -9,7 +9,7 @@ class BlogContent extends Model {
      */
 
     protected $table = 'blog_content';
-    protected $fillable = ['id', 'title', 'slug','schedule', 'content','year','month', 'author', "tags",'status', 'views', 'comments', 'likes', 'publish_date'];
+    protected $fillable = ['id', 'title', 'slug','schedule', 'content','year', 'month', 'author', "tags",'status', 'views', 'comments', 'likes', 'publish_date', 'category_id'];
 
 
     public function author_u() {
@@ -30,6 +30,8 @@ class BlogContent extends Model {
         return $this->hasMany(Comment::class,'blog_content_id','id')->where('status',"1");
     }
 
-
-
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id');
+    }
 }

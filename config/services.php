@@ -47,7 +47,8 @@ return [
     'google' => [
         'client_id' => env('LIB_GOOGLE_CLIENT_ID'),
         'client_secret' => env('LIB_GOOGLE_CLIENT_SECRET'),
-        'redirect' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://" . $_SERVER['HTTP_HOST'] . '/auth/complete',
+//        'redirect' => @(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://" . @$_SERVER['HTTP_HOST'] . '/auth/complete',
+        'redirect' => env('APP_AUTH_REDIRECT'),
     ],
 
 ];
