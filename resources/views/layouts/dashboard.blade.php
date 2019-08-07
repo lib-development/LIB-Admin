@@ -57,10 +57,10 @@
                 <i class="ti-align-left"></i>
             </button>
 
-            <a class="navbar-brand" href="http://www.lindaikejisblog.com" target="_blank">
+            {{-- <a class="navbar-brand" href="http://www.lindaikejisblog.com" target="_blank">
                 <img src="{{ url('/img/favicon.png') }}">
                 <span>Linda Ikeji's Blog</span>
-            </a>
+            </a> --}}
 
             <ul class="nav navbar-nav-xs">  <!-- START: Responsive Top Right tool bar -->
                 <li>
@@ -88,7 +88,7 @@
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="https://www.lindaikejisblog.com" target="_blank">
+                    <a target="_blank" href="https://www.lindaikejisblog.com" target="_blank">
                         Visit Website as Admin
                     </a>
                 </li>
@@ -152,10 +152,10 @@
                             <li><a href="{{ url('/posts/approval/pending') }}">Pending Approval ({{ article('2') }})</a></li>
                             <li><a href="{{ url('/posts/approval/published') }}">Published (
                                     @if(auth()->user()->user_type_id == "1")
-{{ setting_ii() }}
-                                        @else
-                                    {{ article('1') }}
-                                        @endif
+                                        {{ setting_ii() }}
+                                    @else
+                                        {{ article('1') }}
+                                    @endif
                                         )</a></li>
                             <li><a href="{{ url('/posts/draft') }}">Draft ({{ article('3') }})</a></li>
                             @if(auth()->user()->user_type_id == "1")
@@ -164,13 +164,31 @@
                         </ul>
                     </div>
                 </li>
-                @if(auth()->user()->user_type_id == "1")
                 <li class="has-submenu">
                     <a href="#submenuTwo" data-toggle="collapse" aria-expanded="false">
+                        <i class="sli-layers"></i>
+                        <span class="nav-text">Categories</span>
+                    </a>
+                    <div class="sub-menu collapse secondary" id="submenuTwo">
+                        <ul>
+                            <li><a href="{{ url('/categories') }}">All Categories</a></li>
+                            @foreach (allCategories() as $item)
+                                <li>
+                                    <a href="{{ url('/categories/') }}/{{ $item->id }}">
+                                        - {{ $item->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </li>
+                @if(auth()->user()->user_type_id == "1")
+                <li class="has-submenu">
+                    <a href="#submenuTen" data-toggle="collapse" aria-expanded="false">
                         <i class="sli-present"></i>
                         <span class="nav-text">Adverts</span>
                     </a>
-                    <div class="sub-menu collapse secondary" id="submenuTwo">
+                    <div class="sub-menu collapse secondary" id="submenuTen">
                         <ul>
                             <li><a href="{{ url('/adverts/new') }}">Post Advert</a></li>
                             <li><a href="{{ url('/adverts') }}">Adverts</a></li>

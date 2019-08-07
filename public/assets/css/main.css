@@ -1,4 +1,4 @@
-/* 
+/*
     Created on  : Nov 29, 2016, 12:50:39 AM
     Author      : Prakasam Mathaiyan
     URL         : http://www.prakasam.co
@@ -2968,7 +2968,7 @@ body.login2 #registerDiv {
 
 
 /*******************************************************************************
-                                    Lock Screen 
+                                    Lock Screen
 *******************************************************************************/
 
 .lock-screen {
@@ -3094,7 +3094,7 @@ body.page404 .container .input-group {
 
 
 /*******************************************************************************
-        ## INVOICE 
+        ## INVOICE
 *******************************************************************************/
 
 .invoice .img-invoice-logo {
@@ -3600,7 +3600,7 @@ body.login2 #registerDiv {
 
 
 /*******************************************************************************
-                                    Lock Screen 
+                                    Lock Screen
 *******************************************************************************/
 
 .lock-screen {
@@ -3915,4 +3915,36 @@ body.login2 #registerDiv {
 .pagination {
     display: flex;
     justify-content: center;
+}
+
+.pagination-button {
+    display: flex;
+    padding-left: 0;
+    margin: 20px 10px;
+    border-radius: 4px;
+    list-style-type: none;
+}
+
+.pagination-button li {
+    margin-right: 20px;
+}
+
+.pagination-button li a {
+    padding: 10px;
+    border-radius: 5px;
+    color: #eee;
+}
+
+.pagination-button li a.back {
+    background: #b72122;
+}
+
+.pagination-button li a.next {
+    background: #b72122;
+}
+
+a.back.disabled {
+    background: white !important;
+    color: #b72122 !important;
+    border: 1px solid #b72122;
 }
