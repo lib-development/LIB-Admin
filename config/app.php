@@ -180,7 +180,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
-        
+
         App\Providers\HelperServiceProvider::class,
 
     ],
@@ -241,6 +241,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
+        'Uuid' => Webpatser\Uuid\Uuid::class,
     ],
 
 ];

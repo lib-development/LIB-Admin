@@ -23,7 +23,8 @@
         "spatie/laravel-varnish": "^2.2",
         "superbalist/laravel-google-cloud-storage": "^2.2",
         "unisharp/laravel-ckeditor": "^4.7",
-        "unisharp/laravel-filemanager": "^1.9"
+        "unisharp/laravel-filemanager": "^1.9",
+        "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

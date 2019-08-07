@@ -155,3 +155,8 @@ function build_data_files($boundary, $fields, $files){
 function create_signature($param_string, $secretKey) {
     return hash_hmac("sha1", $param_string, $secretKey);
 }
+
+function allCategories() {
+    $categories = \App\Models\Category::all();
+    return $categories;
+}
