@@ -28,32 +28,14 @@ class MainController extends Controller
 
     public function addNewBlogPost(AddBlogPost $request)
     {
-        //status
-        //1 = Active
-        //2 = pending approval
-        //3 = save
         $index = 1;
         $type = false;
         $data = $request->all();
+        // dd($data);
         $data['author'] = auth()->user()->id;
         $data['content'] = utf8_encode($data['content']);
         $data['title'] = utf8_encode($data['title']);
         $data['slug'] = str_slug($data['title']) . '-'  . $this->nowTime();
-
-        // $all_slugs = Cache::get('all_slugs');
-
-        // if (!$all_slugs) {
-        //     $all_slugs = BlogContent::pluck('slug', 'id')->toArray();
-        //     Cache::put('all_slugs', $all_slugs, 120);
-        // }
-
-        // if (in_array($data['slug'], $all_slugs)) {
-        //     $tmp = array_count_values($all_slugs);
-        //     $cnt = $tmp[$data['slug']];
-        //     $total = (int) $cnt + 1;
-        //     $data['slug'] = $slug . "-" . $total;
-        // }
-
         $data['schedule'] = null;
 
         //a switch would work but this still works

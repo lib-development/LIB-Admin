@@ -14,9 +14,9 @@
                         <div class="panel-body">
                             <ul class="list-flow-info">
                                 <li class="col-xs-3 text-primary">
-                                    <h3>Profile 
+                                    <h3>Profile
                                         @if(auth()->user()->user_type_id == "1")
-                                            <a href="#" onclick = "removeUser('{{ encrypt_decrypt('encrypt',$staff->id) }}')" class="btn btn-danger btn-xs">Remove</a>
+                                            <a href="#" onclick = "removeUser('{{ encrypt_decrypt('encrypt',$staff->id) }}')" class="btn btn-danger btn-xs">Remove from LIB Admin</a>
                                         @endif
                                     </h3>
                                     <h4>{{ $staff->name }}</h4>
