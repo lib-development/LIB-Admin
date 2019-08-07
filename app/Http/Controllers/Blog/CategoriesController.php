@@ -13,7 +13,7 @@ class CategoriesController extends Controller
 {
     public function getAllCategories()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('pages.categories')->with('categories', $categories);
     }
 
@@ -37,9 +37,9 @@ class CategoriesController extends Controller
     {
         $data = $request->all();
         $data['slug'] = str_slug($data['name']);
+        $data['author_id'] = auth()->user()->id;
         unset($data['_token']);
-        $category = Category::where('id', $id)
-                    ->where('author_id', auth()->user()->id);
+        $category = Category::where('id', $id);
         if ($category->update($data)) {
             session()->flash('category', 'Category Updated!');
             return back();

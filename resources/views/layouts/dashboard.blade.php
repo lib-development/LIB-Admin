@@ -57,10 +57,10 @@
                 <i class="ti-align-left"></i>
             </button>
 
-            {{-- <a class="navbar-brand" href="http://www.lindaikejisblog.com" target="_blank">
+            <a class="navbar-brand" href="http://www.lindaikejisblog.com" target="_blank">
                 <img src="{{ url('/img/favicon.png') }}">
                 <span>Linda Ikeji's Blog</span>
-            </a> --}}
+            </a>
 
             <ul class="nav navbar-nav-xs">  <!-- START: Responsive Top Right tool bar -->
                 <li>

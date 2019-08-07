@@ -115,7 +115,11 @@
 
                                                             <td>
                                                                 <p>
-                                                                    <a href="{{ url('/profile/view/' . encrypt_decrypt('encrypt', $category->owner->id )) }}">{{ $category->owner->name }}</a>
+                                                                    @if (isset($category->owner))
+                                                                        <a href="{{ url('/profile/view/' . encrypt_decrypt('encrypt', $category->owner->id )) }}">{{ $category->owner->name }}</a>
+                                                                    @else
+                                                                        No Author Attached
+                                                                    @endif
                                                                 </p>
                                                             </td>
                                                             <td>
@@ -132,6 +136,9 @@
                                                     @endif
                                             </tbody>
                                         </table>
+
+                                        {{ $categories->links() }}
+
                                     </div>
                                 </div>
                             </div>
