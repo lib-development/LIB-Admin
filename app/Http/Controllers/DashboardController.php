@@ -32,7 +32,7 @@ class DashboardController extends Controller
                 $articles = BlogContent::where('author', $user->id)->count();
                 $pending = BlogContent::where('author', $user->id)->where('status', 2)->count();
                 $published = BlogContent::where('author', $user->id)->where('status', 1)->count();
-                $pending_content = BlogContent::where('status', 2)->orderby('created_at', 'desc')->paginate(50);
+                $pending_content = BlogContent::where('status', 2)->where('author', auth()->user()->id)->orderby('created_at', 'desc')->paginate(50);
                 return view('pages.dashboard')->with(@compact('articles', 'pending', 'published', 'staffs', 'adverts', 'pending_content'));
         }
     }

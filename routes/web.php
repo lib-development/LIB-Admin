@@ -1,7 +1,6 @@
 <?php
 // Authenticated Routes
 Route::group(['middleware' => ['auth']], function () {
-
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/', 'DashboardController@index')->name('home');
     Route::group(['prefix' => 'post'], function () {
@@ -12,10 +11,12 @@ Route::group(['middleware' => ['auth']], function () {
     // POSTS Prefix
     Route::group(['prefix' => 'posts'], function () {
         Route::get('/','DashboardController@viewPosts');
-        Route::get('/draft','DashboardController@allDrafts');
-
+        Route::group(['middleware' => ['admin']], function () {
+            Route::get('/draft','DashboardController@allDrafts');
+            Route::get('/schedule','DashboardController@scheduledPost');
+        });
         // Approval Routes
-        Route::group(['prefix' => 'approval'], function () {
+        Route::group(['prefix' => 'approval', 'middleware' => ['admin']], function () {
             Route::get('/pending','DashboardController@approvalPending');
             Route::post('/pending','DashboardController@approvalPending');
             Route::get('/published','DashboardController@publishedApproval');
@@ -23,12 +24,11 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // POST Prefix
-    Route::group(['prefix' => 'post'], function () {
+    Route::group(['prefix' => 'post', 'middleware' => ['checkPostOwner']], function () {
         Route::post('/edit/','Blog\MainController@completeEditPost');
         Route::get('/edit/{id}','Blog\MainController@editPostShow');
         Route::get('/delete/{id}','Blog\MainController@deleteAPost');
         Route::get('/update/{id}','Blog\NotificationController@sendUsersBlogUpdate');
-        Route::get('/schedule','DashboardController@scheduledPost');
     });
 
     // CATEGORIES Prefix
@@ -37,7 +37,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{id}','Blog\CategoriesController@viewCategory');
         Route::post('/','Blog\CategoriesController@addCategory');
         Route::post('/edit/{id}','Blog\CategoriesController@updateCategory');
-        Route::get('/delete/{id}','Blog\CategoriesController@removeCategory');
+        Route::group(['middleware' => ['admin']], function () {
+            Route::get('/delete/{id}','Blog\CategoriesController@removeCategory');
+        });
     });
 
     Route::group(['prefix' => 'file'], function () {
@@ -50,7 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
-    Route::group(['prefix' => 'adverts'], function () {
+    Route::group(['prefix' => 'adverts', 'middleware' => ['admin']], function () {
         Route::get('/','Advert\MainController@index');
         Route::get('/new','Advert\MainController@addAdvert');
         Route::post('/new','Advert\MainController@addAdvertComplete');

@@ -100,14 +100,15 @@
                                                         {{ \Carbon\Carbon::parse($article->publish_date)->format('d/m/Y g:i A') }}
                                                     </td>
                                                     <td>
-
-                                                        <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
-                                                        @if(($article->status == "3" && $article->author == auth()->user()->id ) || auth()->user()->user_type_id == "1")
-                                                            @if($article->status == "1")
-                                                            {{--<a href="#" onclick = "pushArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-info btn-xs">Push</a>--}}
-                                                        @endif
-                                                            <a href="#" onclick = "deleteArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-danger btn-xs">Delete</a>
-                                                        @endif
+                                                        <div class="btn-group">
+                                                            @if(($article->status == "3" && $article->author == auth()->user()->id ) || auth()->user()->user_type_id == "1")
+                                                                @if($article->status == "1")
+                                                                <a href="{{ url('/post/edit/'.encrypt_decrypt('encrypt',$article->id)) }}" class="btn btn-primary btn-xs">Edit</a>
+                                                                {{--<a href="#" onclick = "pushArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-info btn-xs">Push</a>--}}
+                                                            @endif
+                                                                <a href="#" onclick = "deleteArticle('{{ encrypt_decrypt('encrypt',$article->id) }}')" class="btn btn-danger btn-xs">Delete</a>
+                                                            @endif
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach

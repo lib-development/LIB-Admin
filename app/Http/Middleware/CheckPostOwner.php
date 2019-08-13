@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\BlogContent;
 
-class Admin
+class CheckPostOwner
 {
     /**
      * Handle an incoming request.
@@ -15,10 +16,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->user_type_id == "1") {
+        $id = encrypt_decrypt('decrypt', $request->id);
+        $post = BlogContent::where('id', $id)->first();
+        if (($post && $post->author === auth()->user()->id) || auth()->user()->user_type_id === '1') {
             return $next($request);
         }
-        session()->flash('auth-fail',"Action not permitted! \nContact the Admin");
+        session()->flash('auth-fail','Not authorized to proceed!');
         return redirect('/');
     }
 }

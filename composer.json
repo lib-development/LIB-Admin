@@ -20,6 +20,7 @@
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
+        "spatie/laravel-sitemap": "^5.3",
         "spatie/laravel-varnish": "^2.2",
         "superbalist/laravel-google-cloud-storage": "^2.2",
         "unisharp/laravel-ckeditor": "^4.7",
