@@ -47,6 +47,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/style-default.css') }}">
+    @yield('head')
 </head>
 
 <body>
@@ -57,13 +58,16 @@
             <div class="top-bar">
                 <!-- START: Responsive Search -->
                 <div class="container">
-                    <div class="main-search">
-                        <div class="input-wrap">
-                            <input class="form-control" type="text" placeholder="Search Here...">
-                            <a href="#"><i class="sli-magnifier"></i></a>
+                    <form method="GET" action="/search/posts">
+                        <div class="main-search">
+                            <div class="input-wrap">
+                                <input name="search" class="form-control" type="text"
+                                    placeholder="Search Here...">
+                                <a href="#"><i class="sli-magnifier"></i></a>
+                            </div>
+                            <span class="close-search search-toggle"><i class="ti-close"></i></span>
                         </div>
-                        <span class="close-search search-toggle"><i class="ti-close"></i></span>
-                    </div>
+                    </form>
                 </div>
             </div> <!-- END: Responsive Search -->
 
