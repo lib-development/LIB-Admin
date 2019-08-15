@@ -25,8 +25,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     // POST Prefix
     Route::group(['prefix' => 'post', 'middleware' => ['checkPostOwner']], function () {
-        Route::post('/edit/','Blog\MainController@completeEditPost');
         Route::get('/edit/{id}','Blog\MainController@editPostShow');
+        Route::post('/edit/','Blog\MainController@completeEditPost');
         Route::get('/delete/{id}','Blog\MainController@deleteAPost');
         Route::get('/update/{id}','Blog\NotificationController@sendUsersBlogUpdate');
     });
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'file'], function () {
-        Route::post('/upload', 'Blog\ImageController@uploadImageToGoogleCloudBucketStorage');
+        Route::post('/upload', 'Blog\ImageController@uploadFile');
     });
 
     Route::group(['prefix' => 'search'], function () {

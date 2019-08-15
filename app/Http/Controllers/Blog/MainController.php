@@ -143,7 +143,6 @@ class MainController extends Controller
         }
 
         $article = BlogContent::where('id', $data['id'])->first();
-
         Cache::forget($article->slug);
 
         if ($type) {

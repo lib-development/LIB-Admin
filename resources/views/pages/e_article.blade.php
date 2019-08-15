@@ -1,5 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('head')
+    <!-- Include Editor style. -->
+    <link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+    <!-- Include JS file. -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/js/froala_editor.pkgd.min.js'></script>
+@endsection
 @section('content')
     <!-- END: Side Navigation -->
     <style>
@@ -124,7 +130,7 @@
                                 </select>
                             </div>
                                 <div class="form-group">
-                                    <textarea required id="my-editor" name="content" class="form-control">{!! utf8_decode($article->content) !!}</textarea>
+                                    <textarea required id="my-editor-froala" name="content" class="form-control">{!! utf8_decode($article->content) !!}</textarea>
                                 </div>
 
                             </form>

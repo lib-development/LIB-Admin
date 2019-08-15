@@ -47,6 +47,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/style-default.css') }}">
+    @yield('head')
 </head>
 
 <body>

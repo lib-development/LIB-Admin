@@ -16,9 +16,9 @@ class CheckPostOwner
      */
     public function handle($request, Closure $next)
     {
-        $id = encrypt_decrypt('decrypt', $request->id);
-        $post = BlogContent::where('id', $id)->first();
-        if (($post && $post->author === auth()->user()->id) || auth()->user()->user_type_id === '1') {
+        $id = $request->method() === "POST" ? $request->id : encrypt_decrypt('decrypt', $request->id);
+        $post = BlogContent::where('id', $id)->where('author', auth()->user()->id)->first();
+        if ($post) {
             return $next($request);
         }
         session()->flash('auth-fail','Not authorized to proceed!');
